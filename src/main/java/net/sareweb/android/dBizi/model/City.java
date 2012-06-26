@@ -30,4 +30,8 @@ public class City {
 		return stations.get(i);
 	}
 	
+	public List<Station> getStations(){
+		return stations;
+	}
+	
 }

@@ -1,7 +1,6 @@
 package net.sareweb.android.dBizi.adapter;
 
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 
 import net.sareweb.android.dBizi.R;
 import net.sareweb.android.dBizi.exception.NoSuchStationException;
@@ -53,7 +52,7 @@ public class StationAdapter extends BaseAdapter{
 		
 		TextView name = (TextView) convertView.findViewById(R.id.name);
 		try {
-			String nameDecoded = URLDecoder.decode(city.getStation(position).getStationName());
+			String nameDecoded = URLDecoder.decode(city.getStation(position).getNombre());
 			name.setText(nameDecoded);
 		} catch (NoSuchStationException e) {
 			name.setText("Error!");
@@ -61,7 +60,7 @@ public class StationAdapter extends BaseAdapter{
 
 		TextView info = (TextView) convertView.findViewById(R.id.info);
 		try {
-			info.setText(city.getStation(position).getAvailableDockAmount() + " / " + city.getStation(position).getDockAmount());
+			info.setText(city.getStation(position).getBicisDisponibles() + " / " + city.getStation(position).getPlazasTotales());
 		} catch (NoSuchStationException e) {
 			info.setText("Error!");
 		}
