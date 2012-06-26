@@ -1,9 +1,14 @@
 package net.sareweb.android.dBizi.activity;
 
+import java.util.Locale;
+
 import net.sareweb.android.dBizi.R;
 import net.sareweb.android.dBizi.util.DBiziConstants;
+import net.sareweb.android.dBizi.util.LangUtil;
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,6 +28,10 @@ public class DBiziMainActivity extends TabActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
+		
+		userPrefs = getSharedPreferences(DBiziConstants.USER_PREFS, MODE_PRIVATE);
+		
+		LangUtil.updateLanguage(this, userPrefs.getString(DBiziConstants.USER_PREFS_LANG, DBiziConstants.USER_PREF_LANG_EU));
 		
 		setContentView(R.layout.main);
 
@@ -46,10 +55,10 @@ public class DBiziMainActivity extends TabActivity implements
 		tabHost.addTab(spec);
 		
 		spec = tabHost
-				.newTabSpec("about")
-				.setIndicator("About",
-						res.getDrawable(android.R.drawable.ic_dialog_info))
-				.setContent(AboutActivity_.intent(this).get());
+				.newTabSpec("settings")
+				.setIndicator(getString(R.string.settings),
+						res.getDrawable(android.R.drawable.ic_menu_preferences))
+				.setContent(SettingsActivity_.intent(this).get());
 		tabHost.addTab(spec);
 
 		tabHost.setCurrentTab(0);
@@ -76,5 +85,6 @@ public class DBiziMainActivity extends TabActivity implements
 	}
 
 	TabHost tabHost;
+	SharedPreferences userPrefs;
 
 }

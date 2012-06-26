@@ -4,7 +4,7 @@ package net.sareweb.android.dBizi.activity;
 import net.sareweb.android.dBizi.R;
 import net.sareweb.android.dBizi.adapter.StationAdapter;
 import net.sareweb.android.dBizi.model.City;
-import net.sareweb.android.dBizi.util.CityUtils;
+import net.sareweb.android.dBizi.util.CityUtil;
 import net.sareweb.android.dBizi.util.DBiziConstants;
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public class StationListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.station_list);
         
-        City c = CityUtils.initCity(DBiziConstants.IDIOMA_CAS);
+        City c = CityUtil.initCity(DBiziConstants.IDIOMA_CAS);
         
         sAdapter = new StationAdapter(this, c);
         ListView list = (ListView)findViewById(android.R.id.list);

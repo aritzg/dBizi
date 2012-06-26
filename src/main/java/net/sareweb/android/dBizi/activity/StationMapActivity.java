@@ -8,7 +8,7 @@ import net.sareweb.android.dBizi.model.City;
 import net.sareweb.android.dBizi.model.Station;
 import net.sareweb.android.dBizi.overlay.StationItemizedOverlay;
 import net.sareweb.android.dBizi.overlay.StationOverlayItem;
-import net.sareweb.android.dBizi.util.CityUtils;
+import net.sareweb.android.dBizi.util.CityUtil;
 import net.sareweb.android.dBizi.util.DBiziConstants;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -35,7 +35,7 @@ public class StationMapActivity extends MapActivity {
 	    controller.setZoom(DBiziConstants.BDIZI_DEFAULT_ZOOM);
 	    
 	    mapOverlays = mapView.getOverlays();
-	    city = CityUtils.initCity(DBiziConstants.IDIOMA_CAS);
+	    city = CityUtil.initCity(DBiziConstants.IDIOMA_CAS);
 	    loadStationsInMap();
     }
     

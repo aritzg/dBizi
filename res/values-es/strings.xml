@@ -2,5 +2,5 @@
 <resources>
     <string name="hello">Hello dBizi!</string>
     <string name="app_name">dBizi</string>
-    <string name="settings">Hobespenak</string>
+    <string name="settings">Preferencias</string>
 </resources>

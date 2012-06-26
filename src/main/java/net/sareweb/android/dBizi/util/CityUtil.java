@@ -19,7 +19,7 @@ import com.google.gson.reflect.TypeToken;
 
 import android.util.Log;
 
-public class CityUtils {
+public class CityUtil {
 
 	public static City initCity(String idioma) {
 
