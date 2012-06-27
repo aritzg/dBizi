@@ -7,6 +7,7 @@ import net.sareweb.android.dBizi.model.City;
 import net.sareweb.android.dBizi.util.CityUtil;
 import net.sareweb.android.dBizi.util.DBiziConstants;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -22,13 +23,17 @@ public class StationListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.station_list);
         
-        City c = CityUtil.initCity(DBiziConstants.IDIOMA_CAS);
+        userPrefs = getSharedPreferences(DBiziConstants.USER_PREFS, MODE_PRIVATE);
+        String idioma = userPrefs.getString(DBiziConstants.USER_PREFS_LANG, DBiziConstants.USER_PREF_LANG_EU);
+        
+        City c = CityUtil.initCity(idioma);
         
         sAdapter = new StationAdapter(this, c);
         ListView list = (ListView)findViewById(android.R.id.list);
 		list.setAdapter(sAdapter);
     }
     
+    SharedPreferences userPrefs;
     StationAdapter sAdapter;
 
 }

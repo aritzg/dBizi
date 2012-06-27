@@ -25,7 +25,6 @@ public class SettingsActivity extends Activity implements OnClickListener{
         
         userPrefs = getSharedPreferences(DBiziConstants.USER_PREFS, MODE_PRIVATE);
         String lang = userPrefs.getString(DBiziConstants.USER_PREFS_LANG, DBiziConstants.USER_PREF_LANG_EU);
-		Log.d(TAG, lang);
 
         if(lang.equals(DBiziConstants.USER_PREF_LANG_ES)){
         	rdLangCas.setChecked(true);
