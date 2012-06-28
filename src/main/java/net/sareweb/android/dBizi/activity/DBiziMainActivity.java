@@ -13,9 +13,12 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
+import android.widget.TextView;
 
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 
 @EActivity
@@ -43,21 +46,21 @@ public class DBiziMainActivity extends TabActivity implements
 
 		spec = tabHost
 				.newTabSpec("list")
-				.setIndicator("List",
-						res.getDrawable(android.R.drawable.ic_menu_view))
+				.setIndicator(getString(R.string.list),
+						res.getDrawable(R.drawable.list))
 				.setContent(StationListActivity_.intent(this).get());
 		tabHost.addTab(spec);
 
 		Intent mapIntent = new Intent().setClass(this, StationMapActivity.class);
 		spec = tabHost.newTabSpec("map")
-				.setIndicator("Map", res.getDrawable(android.R.drawable.ic_dialog_map))
+				.setIndicator(getString(R.string.map), res.getDrawable(R.drawable.world))
 				.setContent(mapIntent);
 		tabHost.addTab(spec);
 		
 		spec = tabHost
 				.newTabSpec("settings")
 				.setIndicator(getString(R.string.settings),
-						res.getDrawable(android.R.drawable.ic_menu_preferences))
+						res.getDrawable(R.drawable.settings))
 				.setContent(SettingsActivity_.intent(this).get());
 		tabHost.addTab(spec);
 
@@ -73,15 +76,36 @@ public class DBiziMainActivity extends TabActivity implements
 
 	private void paintTabsColors() {
 		for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
-			tabHost.getTabWidget()
-					.getChildAt(i)
-					.setBackgroundColor(
+			View tab = tabHost.getTabWidget().getChildAt(i); 
+			
+			tab.setBackgroundColor(
 							Color.parseColor(DBiziConstants.STYLE_COLOR_TAB_NO_SELECTED));
+			
+			TextView tv = (TextView) tab.findViewById(android.R.id.title);
+            tv.setTextColor(Color.parseColor(DBiziConstants.STYLE_COLOR_TAB_NO_SELECTED_TEXT));
+		
+		
 		}
-		tabHost.getTabWidget()
-				.getChildAt(tabHost.getCurrentTab())
-				.setBackgroundColor(
+		View tab = tabHost.getTabWidget()
+				.getChildAt(tabHost.getCurrentTab());
+		
+		tab.setBackgroundColor(
 						Color.parseColor(DBiziConstants.STYLE_COLOR_TAB_SELECTED));
+		
+		TextView tv = (TextView) tab.findViewById(android.R.id.title);
+        tv.setTextColor(Color.parseColor(DBiziConstants.STYLE_COLOR_TAB_SELECTED_TEXT));
+	}
+	
+	@Click(R.id.imgReload)
+	public void reloladClicked(){
+	
+		Intent intent = DBiziMainActivity_.intent(this).get();
+		overridePendingTransition(0, 0);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		finish();
+		overridePendingTransition(0, 0);
+		startActivity(intent);
+
 	}
 
 	TabHost tabHost;

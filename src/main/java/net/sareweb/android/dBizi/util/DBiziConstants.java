@@ -22,4 +22,7 @@ public class DBiziConstants {
 	public static final String STYLE_COLOR_TAB_SELECTED = "#62748f";
 	public static final String STYLE_COLOR_TAB_NO_SELECTED = "#FFFFFF";
 	
+	public static final String STYLE_COLOR_TAB_SELECTED_TEXT = "#FFFFFF";
+	public static final String STYLE_COLOR_TAB_NO_SELECTED_TEXT = "#62748f";
+	
 }
