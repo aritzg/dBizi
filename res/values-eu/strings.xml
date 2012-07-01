@@ -3,4 +3,5 @@
     <string name="hello">Hello dBizi!</string>
     <string name="app_name">dBizi</string>
     <string name="settings">Hobespenak</string>
+    <string name="not_connected">Konexiorik gabe</string>
 </resources>
