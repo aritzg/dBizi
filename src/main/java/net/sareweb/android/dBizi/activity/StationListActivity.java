@@ -5,6 +5,7 @@ import net.sareweb.android.dBizi.R;
 import net.sareweb.android.dBizi.adapter.StationAdapter;
 import net.sareweb.android.dBizi.model.City;
 import net.sareweb.android.dBizi.util.CityUtil;
+import net.sareweb.android.dBizi.util.ConnectionUtil;
 import net.sareweb.android.dBizi.util.DBiziConstants;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -23,13 +24,17 @@ public class StationListActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.station_list);
-        
-        dialog = ProgressDialog.show(this, "", getString(R.string.loading), true);
+    	super.onCreate(savedInstanceState);
+    	if(!ConnectionUtil.isOnline(this)){
+    		setContentView(R.layout.not_connected);
+    	}else{
+            setContentView(R.layout.station_list);
+            
+            dialog = ProgressDialog.show(this, "", getString(R.string.loading), true);
 		dialog.show();
 		
         loadData();
+    	}
     }
     
     
@@ -48,10 +53,10 @@ public class StationListActivity extends Activity {
 		list.setAdapter(sAdapter);
 		dialog.cancel();
 	}
-    
+	
 	ProgressDialog dialog;
-    SharedPreferences userPrefs;
     StationAdapter sAdapter;
+    SharedPreferences userPrefs;
     City city;
 
 }

@@ -9,8 +9,7 @@
 	<name>dBizi</name>
 
 	<properties>
-		<platform.version> 2.2.1
-		</platform.version>
+		<platform.version>2.2.1</platform.version>
 	</properties>
 
 	<dependencies>
