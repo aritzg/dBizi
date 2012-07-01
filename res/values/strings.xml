@@ -5,4 +5,7 @@
     <string name="loading">Kargatzen...</string>
     <string name="list">Zerrenda</string>
     <string name="map">Mapa</string>
+    <string name="language">Hizkuntza</string>
+    <string name="contact">Kontaktua</string>
+    <string name="aritzg">\@aritzg</string>
 </resources>

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.sareweb.android.dBizi"
     android:installLocation="preferExternal"
-    android:versionCode="1"
-    android:versionName="0.0.1-SNAPSHOT" >
+    android:versionCode="2"
+    android:versionName="0.2" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-sdk android:minSdkVersion="8"/>
