@@ -9,6 +9,7 @@ import net.sareweb.android.dBizi.model.Station;
 import net.sareweb.android.dBizi.overlay.StationItemizedOverlay;
 import net.sareweb.android.dBizi.overlay.StationOverlayItem;
 import net.sareweb.android.dBizi.util.CityUtil;
+import net.sareweb.android.dBizi.util.ConnectionUtil;
 import net.sareweb.android.dBizi.util.DBiziConstants;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -26,17 +27,21 @@ public class StationMapActivity extends MapActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.station_map);
-        
-        MapView mapView = (MapView) findViewById(R.id.mapview);
-	    mapView.setBuiltInZoomControls(true);
-	    MapController controller =  mapView.getController();
-	    controller.setCenter(getDefaultGeoPoint());
-	    controller.setZoom(DBiziConstants.BDIZI_DEFAULT_ZOOM);
-	    
-	    mapOverlays = mapView.getOverlays();
-	    city = CityUtil.initCity(DBiziConstants.IDIOMA_CAS);
-	    loadStationsInMap();
+        if(!ConnectionUtil.isOnline(this)){
+    		setContentView(R.layout.not_connected);
+    	}else{
+            setContentView(R.layout.station_map);
+            
+            MapView mapView = (MapView) findViewById(R.id.mapview);
+    	    mapView.setBuiltInZoomControls(true);
+    	    MapController controller =  mapView.getController();
+    	    controller.setCenter(getDefaultGeoPoint());
+    	    controller.setZoom(DBiziConstants.BDIZI_DEFAULT_ZOOM);
+    	    
+    	    mapOverlays = mapView.getOverlays();
+    	    city = CityUtil.initCity(DBiziConstants.IDIOMA_CAS);
+    	    loadStationsInMap();
+    	}
     }
     
     private void loadStationsInMap(){
