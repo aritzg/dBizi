@@ -1,12 +1,9 @@
 package net.sareweb.android.dBizi.activity;
 
-import java.util.Locale;
-
 import net.sareweb.android.dBizi.R;
 import net.sareweb.android.dBizi.util.DBiziConstants;
 import net.sareweb.android.dBizi.util.LangUtil;
 import android.app.TabActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -20,8 +17,11 @@ import android.widget.TextView;
 
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.OptionsItem;
+import com.googlecode.androidannotations.annotations.OptionsMenu;
 
 @EActivity
+@OptionsMenu(value = R.menu.menu)
 public class DBiziMainActivity extends TabActivity implements
 		OnTabChangeListener {
 
@@ -106,6 +106,11 @@ public class DBiziMainActivity extends TabActivity implements
 		overridePendingTransition(0, 0);
 		startActivity(intent);
 
+	}
+	
+	@OptionsItem(R.id.about)
+	void about() {
+		AboutActivity_.intent(this).start();
 	}
 
 	TabHost tabHost;

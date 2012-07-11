@@ -3,9 +3,12 @@
     <string name="app_name">dBizi</string>
     <string name="settings">Hobespenak</string>
     <string name="not_connected">Konexiorik gabe</string>
-    <string name="loading">Kargatzen...</string>
+    <string name="loading">Kargatzen…</string>
     <string name="list">Zerrenda</string>
     <string name="map">Mapa</string>
     <string name="language">Hizkuntza</string>
     <string name="contact">Kontaktua</string>
+    <string name="license">Lizentzia</string>
+    <string name="code">Kodea</string>
+    <string name="about">Honi buruz…</string>
 </resources>
